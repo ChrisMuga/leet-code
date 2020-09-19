@@ -1,5 +1,5 @@
 """
-Add = Addition of each component
+    Add = Addition of each component
 """
 
 
@@ -9,20 +9,14 @@ class ComplexNumber:
         self.B = B
 
     def __add__(self, other):
-        comp = ComplexNumber(self.A + other.A,  self.B + other.B)
-        return comp
+        return ComplexNumber(self.A + other.A,  self.B + other.B)
 
     def __mul__(self, other):
-        pass
+        return ComplexNumber(self.A)
 
     def __sub__(self, other):
-        pass
+         ComplexNumber(self.A - other.A,  self.B - other.B)
 
     def __idiv__(self, other):
-        comp = ComplexNumber(self.A / other.A)
-        return comp
+        return ComplexNumber(self.A / other.A)
 
-
-c = ComplexNumber()
-d = ComplexNumber(1, 2)
-c.__add__(d)

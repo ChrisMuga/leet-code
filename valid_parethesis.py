@@ -1,28 +1,27 @@
 """
-Given a string s containing just the characters
-'(',')',
-'{', '}'
-'[',']',
-determine if the input string is valid.
+    Given a string s containing just the characters
+    '(',')',
+    '{', '}'
+    '[',']',
+    determine if the input string is valid.
 
-An input string is valid if:
+    An input string is valid if:
 
-    Open brackets must be closed by the same type of brackets.
-    Open brackets must be closed in the correct order.
-
+        Open brackets must be closed by the same type of brackets.
+        Open brackets must be closed in the correct order.
 """
 
 """
-Drawing Board:
+    Drawing Board:
 
-test_input:
+    test_input:
 
-    "{my}(name)[is chris]" => True
-    "{my(name)}{is[chris]}" => True
-    "{{my name is chris})" => False
+        "{my}(name)[is chris]" => True
+        "{my(name)}{is[chris]}" => True
+        "{{my name is chris})" => False
 
-Linearly - O(n)
-check if A == B and number of A is even
+    Linearly - O(n)
+    check if A == B and number of A is even
 
 """
 
