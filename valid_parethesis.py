@@ -34,27 +34,50 @@ def is_valid(input_str: str) -> bool:
         Returns:
             bool
     """
-    char_count = {}
-    opening_tags = set(["[", "(", "{"])
-    closing_tags = set(["]", ")", "}"])
-    opening_tags_set = set()
-    closing_tags_set = set()
+    if len(input_str) == 1:
+        return False
+    tags = {
+        "{":"}",
+        "[":"]",
+        "(":")"
+    }
+    closing_tags = (["]", ")", "}"])
+    expected_closing_tags = []
+    str_is_valid = False
+    print(list(input_str))
+    if input_str[0] in closing_tags:
+        return False
     for char in input_str:
-        if char in ["{", "}", "[", "]", "(", ")"]:
-            if char in opening_tags:
-                opening_tags_set.discard(char)
+        if char in tags:
+            expected_closing_tags.append(tags[char])
+        if char in closing_tags and len(expected_closing_tags) > 0:
+            if char != expected_closing_tags.pop():
+                return False
             else:
-                opening_tags_set.add(char)
-    print(opening_tags_set, closing_tags_set)
-    print("------------")
-    return len(opening_tags_set) == len(closing_tags_set)
+                str_is_valid = True
+        else:
+            str_is_valid = False
+    str_is_valid = str_is_valid if len(expected_closing_tags) == 0 else False
+    return str_is_valid
+
+    print(input_str)
+    print(expected_closing_tags)
+
 
 TEST_INPUT_1 = "{my}(name)[is chris]"
 TEST_INPUT_2 = "{my(name)}{is[chris]}"
 TEST_INPUT_3 = "{{my name is chris})"
+TEST_INPUT_4 = "}{"
+TEST_INPUT_5 = "({{{{}}}))"
+TEST_INPUT_6 = "([]"
+
 
 ANS_1 = is_valid(TEST_INPUT_1)
 ANS_2 = is_valid(TEST_INPUT_2)
 ANS_3 = is_valid(TEST_INPUT_3)
+ANS_4 = is_valid(TEST_INPUT_4)
+ANS_5 = is_valid(TEST_INPUT_5)
+ANS_6 = is_valid(TEST_INPUT_6)
 
-print(ANS_1, ANS_2, ANS_3)
+print(ANS_1, ANS_2, ANS_3, ANS_4, ANS_5, ANS_6)
+# print(ANS_5)
